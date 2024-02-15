@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReservaView;
+use App\Models\Fecha;
 use App\Models\Reservasoout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Throwable;
 
@@ -35,7 +38,7 @@ class ApiReservaOutController extends Controller
                 ], 422);
             }
 
-            Reservasoout::create([
+            $reserva = Reservasoout::create([
                 'name' => $request->name,
                 'apellidos' => $request->apellidos,
                 'email' => $request->email,
@@ -45,6 +48,10 @@ class ApiReservaOutController extends Controller
                 'fecha' => $request->fecha,
                 'hora' => $request->hora,
             ]);
+            Fecha::where('fecha', $request->fecha)
+                ->where('hora', $request->hora)
+                ->update(['disponible' => false]);
+            Mail::to($request->email)->send(new ReservaView($reserva));
 
             return response()->json([
                 'status' => true,

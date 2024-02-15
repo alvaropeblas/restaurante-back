@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiFechaController;
 use App\Http\Controllers\ApiReservaController;
 use App\Http\Controllers\ApiReservaOutController;
 use App\Http\Controllers\ApiTarjetaController;
@@ -22,6 +23,8 @@ Route::get('/users', [AuthController::class, 'users']);
 Route::post('/userRegister', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::post('/crearReservaOut', [ApiReservaOutController::class, 'crearReserva']);
+Route::get('/fechas', [ApiFechaController::class, 'obtenerFechas']);
+
 
 
 Route::middleware('auth:sanctum')->group(function () {

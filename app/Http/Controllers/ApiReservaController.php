@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReservaView;
+use App\Models\Fecha;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Throwable;
 
@@ -33,7 +36,7 @@ class ApiReservaController extends Controller
                 ], 422);
             }
 
-            Reserva::create([
+            $reserva = Reserva::create([
                 'n_personas' => $request->n_personas,
                 'menu' => $request->menu,
                 'alergias' => $request->alergias,
@@ -41,6 +44,10 @@ class ApiReservaController extends Controller
                 'hora' => $request->hora,
                 'user_id' => $user_id
             ]);
+            Fecha::where('fecha', $request->fecha)
+                ->where('hora', $request->hora)
+                ->update(['disponible' => false]);
+            Mail::to($request->user()->email)->send(new ReservaView($reserva));
 
             return response()->json([
                 'status' => true,
@@ -82,7 +89,9 @@ class ApiReservaController extends Controller
                     'message' => 'Unauthorized'
                 ], 403);
             }
-
+            Fecha::where('fecha', $reserva->fecha)
+                ->where('hora', $reserva->hora)
+                ->update(['disponible' => true]);
             $reserva->delete();
 
             return response()->json([
