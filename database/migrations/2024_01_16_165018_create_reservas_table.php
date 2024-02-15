@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('menu');
             $table->string('alergias');
             $table->timestamps();
-            $table->foreign('userid')->references('id')->on('user');
+            $table->foreign('userid')->references('id')->on('users');
         });
     }
 
