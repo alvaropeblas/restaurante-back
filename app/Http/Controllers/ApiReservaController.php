@@ -42,7 +42,7 @@ class ApiReservaController extends Controller
                 'alergias' => $request->alergias,
                 'fecha' => $request->fecha,
                 'hora' => $request->hora,
-                'userId' => $user_id
+                'userid' => $user_id
             ]);
             Fecha::where('fecha', $request->fecha)
                 ->where('hora', $request->hora)

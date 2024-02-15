@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->integer('n_personas');
             $table->date('fecha');
-            $table->unsignedBigInteger('userId');
+            $table->unsignedBigInteger('userid');
             $table->string('hora');
             $table->string('menu');
             $table->string('alergias');
             $table->timestamps();
-            $table->foreign('userId')->references('id')->on('user');
+            $table->foreign('userid')->references('id')->on('user');
         });
     }
 

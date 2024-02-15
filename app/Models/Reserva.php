@@ -17,7 +17,7 @@ class Reserva extends Model
         'n_personas',
         'menu',
         'alergias',
-        'userId',
+        'userid',
     ];
     public function usuario()
     {
