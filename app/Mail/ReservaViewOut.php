@@ -2,14 +2,12 @@
 
 namespace App\Mail;
 
-use App\Models\Reserva;
 use App\Models\Reservasoout;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ReservaView extends Mailable
+class ReservaViewOut extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,7 +15,7 @@ class ReservaView extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(Reserva $reserva)
+    public function __construct(Reservasoout $reserva)
     {
         $this->reserva = $reserva;
     }

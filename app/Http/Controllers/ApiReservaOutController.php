@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ReservaView;
+use App\Mail\ReservaViewOut;
 use App\Models\Fecha;
 use App\Models\Reservasoout;
 use Illuminate\Http\Request;
@@ -51,7 +52,8 @@ class ApiReservaOutController extends Controller
             Fecha::where('fecha', $request->fecha)
                 ->where('hora', $request->hora)
                 ->update(['disponible' => false]);
-            Mail::to($request->email)->send(new ReservaView($reserva));
+
+            Mail::to($request->email)->send(new ReservaViewOut($reserva));
 
             return response()->json([
                 'status' => true,
