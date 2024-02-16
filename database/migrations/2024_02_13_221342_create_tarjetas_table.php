@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tarjetas', function (Blueprint $table) {
             $table->id();
             $table->integer('n_tarjeta');
-            $table->integer('f_vencimento');
+            $table->integer('f_vencimiento');
             $table->integer('cvv');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
