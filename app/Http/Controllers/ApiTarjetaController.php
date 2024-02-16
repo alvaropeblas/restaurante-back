@@ -52,7 +52,7 @@ class ApiTarjetaController extends Controller
 
     public function obtenerTarjetas(Request $request)
     {
-        $user = $request->user()->id;
+        $user = $request->user();
 
         try {
             $tarjetas =  $user->tarjetas()->get();
