@@ -47,8 +47,9 @@ class ApiReservaController extends Controller
             Fecha::where('fecha', $request->fecha)
                 ->where('hora', $request->hora)
                 ->update(['disponible' => false]);
-            Mail::to($request->user()->email)->send(new ReservaView($reserva));
 
+/*             Mail::to($request->user()->email)->send(new ReservaView($reserva));
+ */
             return response()->json([
                 'status' => true,
                 'message' => 'Reserva created successfully',
