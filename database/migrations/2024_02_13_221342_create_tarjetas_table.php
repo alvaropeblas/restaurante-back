@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('tarjetas', function (Blueprint $table) {
             $table->id();
             $table->integer('n_tarjeta');
+            $table->unsignedBigInteger('user_id');
             $table->string('fecha_vencimento');
             $table->integer('cvv');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
