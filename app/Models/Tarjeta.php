@@ -14,6 +14,7 @@ class Tarjeta extends Model
         'n_tarjeta',
         'fecha_vencimento',
         'cvv',
+        'user_id',
     ];
 
     public function usuario()
