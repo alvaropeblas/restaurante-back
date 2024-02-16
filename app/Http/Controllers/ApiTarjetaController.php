@@ -18,7 +18,7 @@ class ApiTarjetaController extends Controller
                 $request->all(),
                 [
                     'n_tarjeta' => 'required',
-                    'fecha_vencimiento' => 'required',
+                    'f_vencimiento' => 'required',
                     'cvv' => 'required',
                 ]
             );
@@ -33,7 +33,7 @@ class ApiTarjetaController extends Controller
 
             Tarjeta::create([
                 'n_tarjeta' => $request->n_tarjeta,
-                'fecha_vencimiento' => $request->fecha_vencimiento,
+                'f_vencimiento' => $request->f_vencimiento,
                 'cvv' => $request->cvv,
                 'user_id' => $user_id,
             ]);

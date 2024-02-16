@@ -12,7 +12,7 @@ class Tarjeta extends Model
 
     protected $fillable = [
         'n_tarjeta',
-        'fecha_vencimento',
+        'f_vencimento',
         'cvv',
         'user_id',
     ];
