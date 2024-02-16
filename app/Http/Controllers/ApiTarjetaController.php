@@ -35,12 +35,12 @@ class ApiTarjetaController extends Controller
                 'n_tarjeta' => $request->n_tarjeta,
                 'fecha_vencimiento' => $request->fecha_vencimiento,
                 'cvv' => $request->cvv,
-                'user_id' => $user_id
+                'user_id' => $user_id,
             ]);
 
             return response()->json([
                 'status' => true,
-                'message' => 'Reserva created successfully',
+                'message' => 'Tarjeta created successfully',
             ], 201);
         } catch (Throwable $th) {
             return response()->json([
