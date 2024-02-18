@@ -53,8 +53,8 @@ class ApiReservaOutController extends Controller
                 ->where('hora', $request->hora)
                 ->update(['disponible' => false]);
 
-/*             Mail::to($request->email)->send(new ReservaViewOut($reserva));
- */
+            Mail::to($request->email)->send(new ReservaViewOut($reserva));
+
             return response()->json([
                 'status' => true,
                 'message' => 'Reserva created successfully',
