@@ -45,7 +45,7 @@ return [
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
             'from' => [
-                'address' => env('MAIL_FROM_ADDRESS', 'elpestorestaurant@gmail.com'),
+                'address' => env('MAIL_FROM_ADDRESS', 'daw18.medacarena.com.es'),
                 'name' => env('MAIL_FROM_NAME', 'El Pesto Restaurant'),
             ],
         ],
