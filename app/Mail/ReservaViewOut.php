@@ -27,7 +27,7 @@ class ReservaViewOut extends Mailable
      */
     public function build()
     {
-        return $this->subject('Reserva View')
+        return $this->subject('Reserva confirm')
             ->view('emails.reserva', ['reserva' => $this->reserva]); // Assuming you have a 'reserva.blade.php' file in 'resources/views/emails'
     }
 }
