@@ -13,15 +13,14 @@ class FechasTableSeeder extends Seeder
      */
     public function run()
     {
-        // Define las fechas y horas para febrero y marzo
         $fechas = [];
 
-        // Añade todas las fechas de martes a sábado para febrero y marzo
         for ($month = 2; $month <= 3; $month++) {
-            $year = 2024; // Cambia el año según sea necesario
-            $daysInMonth = Carbon::create($year, $month, 1)->daysInMonth;
+            $year = 2024;
+            $startDay = ($month == 2) ? 20 : 1; // Empieza desde el 20 de febrero o desde el 1 de marzo
+            $daysInMonth = Carbon::create($year, $month, $startDay)->daysInMonth;
 
-            for ($day = 1; $day <= $daysInMonth; $day++) {
+            for ($day = $startDay; $day <= $daysInMonth; $day++) {
                 $currentDate = Carbon::create($year, $month, $day);
 
                 // Agrega solo las fechas de martes a sábado
